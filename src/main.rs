@@ -28,8 +28,13 @@ impl robot {
    fn parse(src: &str) -> Result<Vec<OpCode>,&str> {
        src.split(";").map(|str| {
            match str {
-               "check" => Ok(OpCode::Check),
-               _ => Err("!!")
+               "step" =>  Ok(OpCode::Step),
+               "left" => Ok(OpCode::TurnLeft),
+               "right"=> Ok(OpCode::TurnRight),
+               "check"=> Ok(OpCode::Check),
+               "loop" => Ok(OpCode::LoopStart),
+               "endloop" =>  Ok(OpCode::LoopEnd),
+               _ => Err(format!("!!{}", str))
            }
        }).collect()
    }
