@@ -1,3 +1,5 @@
+use std::error::Error;
+
 enum OpCode {
     Step,
     TurnLeft,
@@ -22,11 +24,28 @@ struct robot {
 }
 
 impl robot {
-   fn parse(src: &str) -> Result<Vec<OpCode>,String> {
+
+   fn parse(src: &str) -> Result<Vec<OpCode>,&str> {
        src.split(";").map(|str| {
-           Some(OpCode::Check)
-       }).try_for_each(|code|   )
+           match str {
+               "check" => Ok(OpCode::Check),
+               _ => Err("!!")
+           }
+       }).collect()
    }
+
+
+    fn parse1(src: &str) -> Result<Vec<OpCode>,&str> {
+         src.split(";").map(|str| {
+            match str {
+                "check" => Ok(OpCode::Check),
+                _ => Err("!!")
+            }
+        }).collect()
+        //result
+    }
+
+
 }
 
 
