@@ -46,7 +46,7 @@ pub mod field {
             BotWrapper {bot, x:0, y:0, direction: DirectionEnum::Up}
         }
         pub fn Step(&mut self, field: Field) -> Result<(), String> {
-            let step_result = self.bot.do_step(true);
+            let step_result = self.bot.do_step(true)?;
 
 
         }
