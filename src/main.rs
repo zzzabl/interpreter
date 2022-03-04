@@ -1,14 +1,14 @@
 mod bot;
 mod field;
 
-use bot::bot::Bot;
-use field::field::{FieldBuilder, Field};
+use field::FieldBuilder;
 
 fn main() {
-    let field = FieldBuilder::new()
-        .set_height(20)
-        .set_width(20)
-        .add_bot("c:\\temp\\test.txt")
+    let mut field = FieldBuilder::new()
+        .set_height(15)
+        .set_width(15)
+        .add_bot_from_file("c:\\temp\\src.txt")
+        .add_wall((4, 4))
         .build();
     field.run();
 }
